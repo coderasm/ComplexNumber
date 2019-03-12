@@ -5,22 +5,25 @@ public class ComPlexTest
   public static void Test()
   {
     // create and initialize a Complex object
-    Complex c1 = new Complex(), c2 = new Complex(), c3 = new Complex();
-    Console.WriteLine("Create 1+j");
-    c1.SetComplex(1, 1);
-    Console.WriteLine("Print that");
+    Complex c1 = new Complex(1, 1), c2 = new Complex(1, -1), c3 = new Complex(0, 0);
+    Console.WriteLine("Complex 1+j");
     c1.print();
-    Console.WriteLine("Create 1-j");
-    c2.SetComplex(1, -1);
-    Console.WriteLine(" (1+j) * (1-j) in the wrong way (correct answer is 2)");
-    c1.mul(c2);
-    //    c1.add(c2);
-
-    c1.print();
-    Console.WriteLine(" (1+j) * (1-j) in the right way (correct answer is 2)");
-    c1.SetComplex(1, 1);
-    c1.mulfix(c2);
-    c1.print();
+    Console.WriteLine("Complex 1-j");
+    c2.print();
+    Console.WriteLine("(1+j) + (1-j)");
+    c1.add(c2).print();
+    Console.WriteLine("(1+j) - (1-j)");
+    c1.sub(c2).print();
+    Console.WriteLine("(1+j) * (1-j)");
+    c1.mul(c2).print();
+    Console.WriteLine("(1+j) / (1-j)");
+    c1.div(c2).print();
+    Console.WriteLine("(1+j) / (0-0)");
+    var result = c1.div(c3);
+    if (result == null)
+      Console.WriteLine("Undefined");
+    else
+      result.print();
     Console.ReadKey();
   }
 }
