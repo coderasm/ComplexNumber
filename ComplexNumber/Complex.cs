@@ -30,6 +30,8 @@ public class Complex
 
   public Complex add(Complex c1)
   {
+    if (isUndefined || c1.isUndefined)
+      return new Complex(null);
     var realPart = rP + c1.rP;
     var imaginaryPart = iP + c1.iP;
     return new Complex(realPart, imaginaryPart);
@@ -37,6 +39,8 @@ public class Complex
 
   public static Complex addTwo(Complex c1, Complex c2)
   {
+    if (c1.isUndefined || c2.isUndefined)
+      return new Complex(null);
     var realPart = c1.rP + c2.rP;
     var imaginaryPart = c1.iP + c2.iP;
     return new Complex(realPart, imaginaryPart);
@@ -44,6 +48,8 @@ public class Complex
 
   public Complex sub(Complex c1)
   {
+    if (isUndefined || c1.isUndefined)
+      return new Complex(null);
     var realPart = rP - c1.rP;
     var imaginaryPart = iP - c1.iP;
     return new Complex(realPart, imaginaryPart);
@@ -51,6 +57,8 @@ public class Complex
 
   public static Complex subTwo(Complex c1, Complex c2)
   {
+    if (c1.isUndefined || c2.isUndefined)
+      return new Complex(null);
     var realPart = c1.rP - c2.rP;
     var imaginaryPart = c1.iP - c2.iP;
     return new Complex(realPart, imaginaryPart);
@@ -58,6 +66,8 @@ public class Complex
 
   public Complex mul(Complex c1)
   {
+    if (isUndefined || c1.isUndefined)
+      return new Complex(null);
     // use the formula (a+bj) * (c+dj) = (ac-bd) + (ad+bc)j
     var realPart = rP * c1.rP - iP * c1.iP;
     var imaginaryPart = rP * c1.iP + iP * c1.rP;
@@ -66,6 +76,8 @@ public class Complex
 
   public static Complex mulTwo(Complex c1, Complex c2)
   {
+    if (c1.isUndefined || c2.isUndefined)
+      return new Complex(null);
     // use the formula (a+bj) * (c+dj) = (ac-bd) + (ad+bc)j
     var realPart = c1.rP * c2.rP - c1.iP * c2.iP;
     var imaginaryPart = c1.rP * c2.iP + c1.iP * c2.rP;
@@ -74,7 +86,7 @@ public class Complex
 
   public Complex div(Complex c1)
   {
-    if (isZero(c1))
+    if (isUndefined || c1.isUndefined || isZero(c1))
       return new Complex(null);
     // use the formula (a+bj) * (c+dj) = (ac-bd) + (ad+bc)j
     var realPart = rP * c1.rP - iP * c1.iP;
@@ -84,7 +96,7 @@ public class Complex
 
   public static Complex divTwo(Complex c1, Complex c2)
   {
-    if (isZero(c2))
+    if (c1.isUndefined || c2.isUndefined || isZero(c2))
       return new Complex(null);
     // use the formula (a+bj) * (c+dj) = (ac-bd) + (ad+bc)j
     var realPart = c1.rP * c2.rP - c1.iP * c2.iP;
