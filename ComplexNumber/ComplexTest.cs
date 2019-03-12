@@ -19,11 +19,7 @@ public class ComPlexTest
     Console.WriteLine("(1+j) / (1-j)");
     c1.div(c2).print();
     Console.WriteLine("(1+j) / (0-0)");
-    var result = c1.div(c3);
-    if (result == null)
-      Console.WriteLine("Undefined");
-    else
-      result.print();
+    c1.div(c3).print();
     Console.ReadKey();
   }
 }

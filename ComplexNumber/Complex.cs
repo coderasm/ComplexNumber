@@ -4,6 +4,7 @@ public class Complex
 {
   private double rP = 0; // real part
   private double iP = 0; // imaginary part
+  private bool isUndefined = false;
 
   public Complex()
   {
@@ -15,6 +16,11 @@ public class Complex
     SetComplex(r, i);
   }
 
+  public Complex(object nullObject)
+  {
+    if (nullObject == null)
+      isUndefined = true;
+  }
 
   public void SetComplex(double r, double i)
   {
@@ -69,7 +75,7 @@ public class Complex
   public Complex div(Complex c1)
   {
     if (isZero(c1))
-      return null;
+      return new Complex(null);
     // use the formula (a+bj) * (c+dj) = (ac-bd) + (ad+bc)j
     var realPart = rP * c1.rP - iP * c1.iP;
     var imaginaryPart = rP * c1.iP + iP * c1.rP;
@@ -79,7 +85,7 @@ public class Complex
   public static Complex divTwo(Complex c1, Complex c2)
   {
     if (isZero(c2))
-      return null;
+      return new Complex(null);
     // use the formula (a+bj) * (c+dj) = (ac-bd) + (ad+bc)j
     var realPart = c1.rP * c2.rP - c1.iP * c2.iP;
     var imaginaryPart = c1.rP * c2.iP + c1.iP * c2.rP;
@@ -93,7 +99,10 @@ public class Complex
 
   public void print()
   {
-    Console.WriteLine("{0} + {1}j", rP, iP);
+    if (isUndefined)
+      Console.WriteLine("Undefined");
+    else
+      Console.WriteLine("{0} + {1}j", rP, iP);
   }
 
 }
