@@ -23,8 +23,8 @@ public class Complex
   //to behave as a defined/non-null complex object.
   public Complex(object nullObject)
   {
-    if (nullObject == null)
-      isUndefined = true;
+    //mark this complex object undefined
+    isUndefined = true;
   }
 
   public void SetComplex(double r, double i)
@@ -114,8 +114,8 @@ public class Complex
     if (isUndefined || c1.isUndefined || isZero(c1))
       return new Complex(null);
     // use the formula (a+bj) / (c+dj) = (1/(c^2 + d^2)) * (ac+bd) + (1/(c^2 + d^2)) * (bc - ad)j
-    var realPart = (1 / (c1.rP * c1.rP + c1.iP * c1.iP))*(rP * c1.rP + iP * c1.iP);
-    var imaginaryPart = (1 / (c1.rP * c1.rP + c1.iP * c1.iP))*(iP * c1.rP - rP * c1.iP);
+    var realPart = (1 / (c1.rP * c1.rP + c1.iP * c1.iP)) * (rP * c1.rP + iP * c1.iP);
+    var imaginaryPart = (1 / (c1.rP * c1.rP + c1.iP * c1.iP)) * (iP * c1.rP - rP * c1.iP);
     //return a new complex number to prevent mutation of other two complex numbers
     return new Complex(realPart, imaginaryPart);
   }
@@ -127,8 +127,8 @@ public class Complex
     if (c1.isUndefined || c2.isUndefined || isZero(c2))
       return new Complex(null);
     // use the formula (a+bj) / (c+dj) = (1/(c^2 + d^2)) * (ac+bd) + (1/(c^2 + d^2)) * (bc - ad)j
-    var realPart = (1 / (c2.rP * c2.rP + c2.iP * c2.iP))*(c1.rP * c2.rP + c1.iP * c2.iP);
-    var imaginaryPart = (1 / (c2.rP * c2.rP + c2.iP * c2.iP))*(c1.iP * c2.rP - c1.rP * c2.iP);
+    var realPart = (1 / (c2.rP * c2.rP + c2.iP * c2.iP)) * (c1.rP * c2.rP + c1.iP * c2.iP);
+    var imaginaryPart = (1 / (c2.rP * c2.rP + c2.iP * c2.iP)) * (c1.iP * c2.rP - c1.rP * c2.iP);
     //return a new complex number to prevent mutation of other two complex numbers
     return new Complex(realPart, imaginaryPart);
   }
