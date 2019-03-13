@@ -88,7 +88,7 @@ public class Complex
   {
     if (isUndefined || c1.isUndefined || isZero(c1))
       return new Complex(null);
-    // use the formula (a+bj) / (c+dj) = (1/(c^2 + d^2)) * (ac+bd) + (1/(c^2 + d^2)) * (ad - bc)j
+    // use the formula (a+bj) / (c+dj) = (1/(c^2 + d^2)) * (ac+bd) + (1/(c^2 + d^2)) * (bc - ad)j
     var realPart = (1 / (c1.rP * c1.rP + c1.iP * c1.iP))*(rP * c1.rP + iP * c1.iP);
     var imaginaryPart = (1 / (c1.rP * c1.rP + c1.iP * c1.iP))*(iP * c1.rP - rP * c1.iP);
     return new Complex(realPart, imaginaryPart);
@@ -98,7 +98,7 @@ public class Complex
   {
     if (c1.isUndefined || c2.isUndefined || isZero(c2))
       return new Complex(null);
-    // use the formula (a+bj) / (c+dj) = (1/(c^2 + d^2)) * (ac+bd) + (1/(c^2 + d^2)) * (ad - bc)j
+    // use the formula (a+bj) / (c+dj) = (1/(c^2 + d^2)) * (ac+bd) + (1/(c^2 + d^2)) * (bc - ad)j
     var realPart = (1 / (c2.rP * c2.rP + c2.iP * c2.iP))*(c1.rP * c2.rP + c1.iP * c2.iP);
     var imaginaryPart = (1 / (c2.rP * c2.rP + c2.iP * c2.iP))*(c1.iP * c2.rP - c1.rP * c2.iP);
     return new Complex(realPart, imaginaryPart);
