@@ -18,7 +18,14 @@ namespace ComplexNumber
     static void Main(string[] args)
     {
       //ComplexTest.TestAddSubMulDiv();
-      ComplexTest.TestSquareRootI();
+      //ComplexTest.TestSquareRootI();
+      Console.WriteLine("########## Part 4 ##########");
+      //For (1 - i)^500
+      var value = Math.Pow(2, 250) * Math.Pow(-1, -125);
+      Console.WriteLine("(1 - i)^500) = " + string.Format("{0:#.#######E+0}", value));
+      //For (-1/2 + sqrt(3)i/2)^300 = (1*e^(2*pi/3))^300
+      value = Math.Pow(-1, 200);
+      Console.WriteLine("(-1/2 + sqrt(3)i/2)^300 = (1*e^(2*pi/3))^300 = (e^((i*pi)*200) = " + value);
       Console.ReadKey();
     }
   }
