@@ -38,7 +38,7 @@ public class Complex
     rP = r;
     iP = i;
     polarMagnitude = Math.Sqrt(rP * rP + iP * iP);
-    polarAngle = Math.Atan(iP / rP) * (180 / Math.PI);
+    polarAngle = Math.Atan(iP / rP);
   }
 
   public static Complex[] SquareRootsOfi()
@@ -54,6 +54,13 @@ public class Complex
     var rootOne = new Complex(newMagnitude * Math.Cos(newDeg), newMagnitude * Math.Sin(newDeg));
     var rootTwo = new Complex(-newMagnitude * Math.Cos(newDeg), -newMagnitude * Math.Sin(newDeg));
     return new Complex[] { rootOne, rootTwo };
+  }
+
+  public Complex toPow(int power)
+  {
+    var realPart = Math.Pow(polarMagnitude, power) * Math.Cos(power * polarAngle);
+    var imaginaryPart = Math.Pow(polarMagnitude, power) * Math.Sin(power * polarAngle);
+    return new Complex(realPart, imaginaryPart);
   }
 
   public Complex add(Complex c1)
@@ -175,7 +182,7 @@ public class Complex
     if (isUndefined)
       Console.WriteLine("Undefined");
     else
-      Console.WriteLine(polarMagnitude + "e^(j" + polarAngle + ")");
+      Console.WriteLine(polarMagnitude + "e^(j" + (polarAngle * (180 / Math.PI)) + ")");
     return this;
   }
 
