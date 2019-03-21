@@ -26,6 +26,8 @@ namespace ComplexNumber
       //For (-1/2 + sqrt(3)i/2)^300 = (1*e^(2*pi/3))^300
       value = Math.Pow(-1, 200);
       Console.WriteLine("(-1/2 + sqrt(3)i/2)^300 = (1*e^(2*pi/3))^300 = (e^((i*pi)*200) = " + value);
+      //For i^1003 = e^((i*pi/2)*1003) = i^1002 * i = -i
+      Console.WriteLine("i^1003 = e^((i*pi/2)*1003) = i^1002 * i = -i");
       Console.ReadKey();
     }
   }
