@@ -30,17 +30,7 @@ namespace ComplexNumber
     public static void TestSquareRootI()
     {
       Console.WriteLine("######## PART 3 (roots of i) ##########");
-      var rootsOfi = Complex.SquareRoot();
-      var rootA = rootsOfi[0];
-      var rootB = rootsOfi[1];
-      Console.Write("Root 1: ");
-      rootA.print();
-      Console.Write("Root squared: ");
-      rootA.mul(rootA).print();
-      Console.Write("Root 2: ");
-      rootB.print();
-      Console.Write("Root squared: ");
-      rootB.mul(rootB).print();
+      Complex.SquareRootOfi();
     }
   }
 }

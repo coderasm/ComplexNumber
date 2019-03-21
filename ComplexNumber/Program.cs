@@ -18,7 +18,7 @@ namespace ComplexNumber
     static void Main(string[] args)
     {
       //ComplexTest.TestAddSubMulDiv();
-      //ComplexTest.TestSquareRootI();
+      ComplexTest.TestSquareRootI();
       Console.WriteLine("########## Part 4 ##########");
       //For (1 - i)^500
       var value = Math.Pow(2, 250) * Math.Pow(-1, -125);

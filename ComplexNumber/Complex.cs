@@ -41,13 +41,19 @@ public class Complex
     polarAngle = Math.Atan(iP / rP) * (180 / Math.PI);
   }
 
-  public static Complex[] SquareRoot()
+  public static string SquareRootOfi()
   {
-    var rootA = new Complex();
-    rootA.isiRoot = true;
-    var rootB = new Complex();
-    rootB.isiRoot = true;
-    return new Complex[] { rootA, rootB };
+    // z = a + bi
+    // i = z^2 = (a^2 - b^2) + 2abi
+    // i = re^(i*pi*theta)
+    //i^(1/2) = (re^(i*pi*theta))^1/2 = r^(1/2) * (e^(i*pi*(theta/2))) = r^(1/2) * (-1^(theta/2))
+    var deg = 90;
+    var magnitude = 1;
+    var newDeg = (90 / 2);
+    var newMagnitude = Math.Sqrt(1);
+    var roots = $"Roots of i : e^(i*{newDeg}) and -e^(i*{newDeg})";
+    Console.WriteLine(roots);
+    return roots;
   }
 
   public Complex add(Complex c1)
@@ -100,22 +106,10 @@ public class Complex
 
   public Complex mul(Complex c1)
   {
-    if (isiRoot && c1.isiRoot)
-    {
-      var iComplex = new Complex();
-      iComplex.isI = true;
-      return iComplex;
-    }
     //check if this complex number or the other complex number is undefined
     //if either are undefined, then return an undefined complex number
     if (isUndefined || c1.isUndefined)
       return new Complex(null);
-    if (isiRoot || c1.isiRoot)
-    {
-      var noniRoot = c1.isiRoot ? c1 : this;
-      noniRoot.isRootProduct = true;
-      return noniRoot;
-    }
     // use the formula (a+bj) * (c+dj) = (ac-bd) + (ad+bc)j
     var realPart = rP * c1.rP - iP * c1.iP;
     var imaginaryPart = rP * c1.iP + iP * c1.rP;
@@ -125,23 +119,10 @@ public class Complex
 
   public static Complex mulTwo(Complex c1, Complex c2)
   {
-    if (c1.isiRoot && c2.isiRoot)
-    {
-      var iComplex = new Complex();
-      iComplex.isI = true;
-      return iComplex;
-    }
-
     //check if this complex number or the other complex number is undefined
     //if either are undefined, then return an undefined complex number
     if (c1.isUndefined || c2.isUndefined)
       return new Complex(null);
-    if (c1.isiRoot || c2.isiRoot)
-    {
-      var noniRoot = c1.isiRoot ? c1 : c2;
-      noniRoot.isRootProduct = true;
-      return noniRoot;
-    }
     // use the formula (a+bj) * (c+dj) = (ac-bd) + (ad+bc)j
     var realPart = c1.rP * c2.rP - c1.iP * c2.iP;
     var imaginaryPart = c1.rP * c2.iP + c1.iP * c2.rP;
@@ -182,14 +163,7 @@ public class Complex
 
   public Complex print()
   {
-    if(isiRoot)
-      Console.WriteLine("i^(1/2) = (-1)^(1/4)");
-    else if (isRootProduct)
-      Console.WriteLine($"({rP} + {iP}j)i");
-    else if (isI) {
-      Console.WriteLine("i = (-1)^(1/2)");
-    }
-    else if (isUndefined)
+    if (isUndefined)
       Console.WriteLine("Undefined");
     else
       Console.WriteLine("{0} + {1}j", rP, iP);
