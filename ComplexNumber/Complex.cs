@@ -6,9 +6,6 @@ public class Complex
   private double iP = 0; // imaginary part
   private double polarMagnitude = 0;
   private double polarAngle = 0;
-  private bool isiRoot = false;
-  private bool isI = false;
-  private bool isRootProduct = false;
   //tracks if the complex object is undefined
   private bool isUndefined = false;
 
@@ -49,18 +46,18 @@ public class Complex
     //i^(1/2) = (re^(i*pi*theta))^1/2 = r^(1/2) * (e^(i*pi*(theta/2))) = r^(1/2) * (-1^(theta/2))
     var deg = 90;
     var magnitude = 1;
-    var newDeg = (90 / 2)*(Math.PI / 180);
-    var newMagnitude = Math.Sqrt(1);
+    var newDeg = (deg / 2)*(Math.PI / 180);
+    var newMagnitude = Math.Sqrt(magnitude);
     var rootOne = new Complex(newMagnitude * Math.Cos(newDeg), newMagnitude * Math.Sin(newDeg));
     var rootTwo = new Complex(-newMagnitude * Math.Cos(newDeg), -newMagnitude * Math.Sin(newDeg));
     return new Complex[] { rootOne, rootTwo };
   }
 
-  public Complex toPow(int power)
+  public Complex toPow(double power)
   {
-    var realPart = Math.Pow(polarMagnitude, power) * Math.Cos(power * polarAngle);
-    var imaginaryPart = Math.Pow(polarMagnitude, power) * Math.Sin(power * polarAngle);
-    return new Complex(realPart, imaginaryPart);
+    var realPart = Math.Pow(polarMagnitude, power) * Math.Round(Math.Cos(power * polarAngle));
+    var imaginaryPart = Math.Pow(polarMagnitude, power) * Math.Round(Math.Sin(power * polarAngle));
+    return new Complex(Math.Round(realPart), Math.Round(imaginaryPart));
   }
 
   public Complex add(Complex c1)

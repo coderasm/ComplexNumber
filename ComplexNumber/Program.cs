@@ -28,7 +28,7 @@ namespace ComplexNumber
       Console.WriteLine("(1 - i)^500) = " + string.Format("{0:#.#######E+0}", value));
       //For (-1/2 + sqrt(3)i/2)^300 = (1*e^(2*pi/3))^300
       value = Math.Pow(-1, 200);
-      var complexTwo = new Complex(-1/2, Math.Sqrt(3)/2);
+      var complexTwo = new Complex(-.5, Math.Sqrt(3)/2);
       Console.Write("Calculated: ");
       complexTwo.toPow(300).print();
       Console.WriteLine("(-1/2 + sqrt(3)i/2)^300 = (1*e^(2*pi/3))^300 = (e^((i*pi)*200) = " + value);
