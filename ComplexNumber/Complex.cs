@@ -41,7 +41,7 @@ public class Complex
     polarAngle = Math.Atan(iP / rP) * (180 / Math.PI);
   }
 
-  public static string SquareRootOfi()
+  public static Complex[] SquareRootsOfi()
   {
     // z = a + bi
     // i = z^2 = (a^2 - b^2) + 2abi
@@ -49,11 +49,11 @@ public class Complex
     //i^(1/2) = (re^(i*pi*theta))^1/2 = r^(1/2) * (e^(i*pi*(theta/2))) = r^(1/2) * (-1^(theta/2))
     var deg = 90;
     var magnitude = 1;
-    var newDeg = (90 / 2);
+    var newDeg = (90 / 2)*(Math.PI / 180);
     var newMagnitude = Math.Sqrt(1);
-    var roots = $"Roots of i : e^(i*{newDeg}) and -e^(i*{newDeg})";
-    Console.WriteLine(roots);
-    return roots;
+    var rootOne = new Complex(newMagnitude * Math.Cos(newDeg), newMagnitude * Math.Sin(newDeg));
+    var rootTwo = new Complex(-newMagnitude * Math.Cos(newDeg), -newMagnitude * Math.Sin(newDeg));
+    return new Complex[] { rootOne, rootTwo };
   }
 
   public Complex add(Complex c1)
