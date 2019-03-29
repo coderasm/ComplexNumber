@@ -35,7 +35,14 @@ public class Complex
     rP = r;
     iP = i;
     polarMagnitude = Math.Sqrt(rP * rP + iP * iP);
-    polarAngle = Math.Atan(iP / rP);
+    if (rP == 0 && iP > 0)
+      polarAngle = Math.PI / 2;
+    else if (rP == 0 && iP < 0)
+      polarAngle = -Math.PI / 2;
+    else if (rP == 0 && iP == 0)
+      polarAngle = 0;
+    else
+      polarAngle = Math.Atan(iP / rP);
   }
 
   public static Complex[] SquareRootsOfi()
@@ -175,7 +182,7 @@ public class Complex
   {
     if (isUndefined)
       return "Undefined";
-    return $"{iP} + {iP}j";
+    return $"{rP} + {iP}j";
   }
 
   public Complex printPolar()
