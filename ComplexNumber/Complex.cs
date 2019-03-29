@@ -167,20 +167,28 @@ public class Complex
 
   public Complex print()
   {
-    if (isUndefined)
-      Console.WriteLine("Undefined");
-    else
-      Console.WriteLine("{0} + {1}j", rP, iP);
+    Console.WriteLine(ToString());
     return this;
+  }
+
+  public override string ToString()
+  {
+    if (isUndefined)
+      return "Undefined";
+    return $"{iP} + {iP}j";
   }
 
   public Complex printPolar()
   {
-    if (isUndefined)
-      Console.WriteLine("Undefined");
-    else
-      Console.WriteLine(polarMagnitude + "e^(j" + (polarAngle * (180 / Math.PI)) + ")");
+    Console.WriteLine(ToPolarString());
     return this;
+  }
+
+  public string ToPolarString()
+  {
+    if (isUndefined)
+      return "Undefined";
+    return polarMagnitude + "e^(j" + (polarAngle * (180 / Math.PI)) + ")";
   }
 
 }
